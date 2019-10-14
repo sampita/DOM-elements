@@ -78,9 +78,9 @@ const students = [
 let articleContainer = document.querySelector("#container")
 let studentComponent
 
-const createStudentComponent = (name, subject, info, score) => {
+const createStudentComponent = (studentInfo) => {
         let studentComponent = ""
-        if (score >= 60) {
+        if (studentInfo.score >= 60) {
             studentComponent = "xx-large passing"
         }
 
@@ -89,9 +89,9 @@ const createStudentComponent = (name, subject, info, score) => {
 
     return `
         <div class="student">
-            <h1 class="${studentComponent}">${name}</h1>
-            <section class ="bordered dashed section--padded>${subject}</section>
-            <aside class="pushRight">${info}</aside>
+            <h1 class="${studentComponent}">${studentInfo.name}</h1>
+            <section class ="bordered dashed section--padded>${studentInfo.subject}</section>
+            <aside class="pushRight">${studentInfo.info}</aside>
         </div>
     `
 }
@@ -100,5 +100,5 @@ let student;
 
 for (let i = 0; i < students.length; i++) {
     student = students[i]
-    articleContainer.innerHTML += createStudentComponent(student.name, student.subject, student.info, student.score);
+    articleContainer.innerHTML += createStudentComponent(students[i]);
 }
